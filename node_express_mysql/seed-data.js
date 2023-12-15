@@ -39,12 +39,13 @@ connection.connect((err) => {
 
       // Define the SQL query to create a table if not exists
       const createTableQuery = `
-      CREATE TABLE IF NOT EXISTS players (
+      CREATE TABLE IF NOT EXISTS movies (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        playerName VARCHAR(255) NOT NULL,
-        playerPosition VARCHAR(255) NOT NULL,
-        playerJerseyNumber INT NOT NULL,
-        playerStory TEXT NOT NULL
+        movieTitle VARCHAR(255) NOT NULL,
+        movieGenre VARCHAR(255) NOT NULL,
+        movieReleaseYear INT NOT NULL,
+        moviePoster VARCHAR(255) NOT NULL,
+        movieTrailer VARCHAR(255) NOT NULL
       )
     `;
 
@@ -56,13 +57,14 @@ connection.connect((err) => {
           return;
         }
 
-        console.log('Table "players" created or already exists');
+        console.log('Table "movies" created or already exists');
 
         // Define the SQL query to insert data into the table
         const insertDataQuery = `
-          INSERT INTO players (playerName, playerPosition, playerJerseyNumber, playerStory) VALUES
-          ('LeBron James', 'Power-forward', 6, 'NBA superstar and multiple-time champion.'),
-          ('Anthony Davis', 'Center', 3, 'Versatile big man with elite defensive skills.')
+        INSERT INTO movies (movieTitle, movieGenre, movieReleaseYear, moviePoster,  movieTrailer) VALUES
+        ('Joker', 'Drama', 2018, 'https://creativereview.imgix.net/content/uploads/2019/12/joker_full.jpg?auto=compress,format&q=60&w=1012&h=1500', 'https://youtu.be/t433PEQGErc?si=7UoVpzklWpRGPCuK'),
+        ('Creed III', 'Drama', 2024, 'https://artofthemovies.co.uk/cdn/shop/products/IMG_1312-310705.jpg?v=1677660328', 'https://youtu.be/AHmCH7iB_IM?si=sMjcFmBC0X1g35V-');
+    
         `;
 
         // Execute the query to insert data
